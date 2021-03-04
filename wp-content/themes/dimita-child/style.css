@@ -11,6 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: dimita-child
 */
 
+ /* Header  */
 .bwp-header.header-v2 .bwp-navigation ul > li.level-0.current_page_item > a, 
 .bwp-header.header-v2 .bwp-navigation ul > li.level-0:hover > a, 
 .bwp-header.header-v2 .bwp-navigation ul > li.level-0.current-menu-item > a, 
@@ -22,8 +23,46 @@ Text Domain: dimita-child
     background-color: #1b1b1b;
 }
 
+/* Main Section */
 @media (min-width: 991px) {
     .bwp-main {
         padding-top: 100px;
     } 
+}
+
+/* Services */
+@media (max-width: 426px) {
+    .service-row {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* align-items: flex-end; */
+        align-content: space-between;
+        height: 500px;
+        margin-bottom: 2rem;
+    }
+
+    .image-section {
+       vertical-align: top;
+    } 
+
+    .text-section {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .featured-image img {
+        min-width: 100%;
+        height: 200px;
+    }
+
+    .text-section p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    .text-section p {
+        font-size: 13px;
+    }
 }
