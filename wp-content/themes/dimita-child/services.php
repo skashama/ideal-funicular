@@ -3,7 +3,6 @@
 ?>
 
 <?php 
-  // $link = get_field('service_cta');
   $i;
 ?>
 
@@ -25,7 +24,7 @@
                     $image = $current['service_image'];
                     if( $i%2 == 0 ):
                       ?>
-                      <div class="row justify-content-center service-row">
+                    <div class="row justify-content-center service-row">
                       <div class="col-12 col-md-6 image-section">                        
                         <figure class="featured-image">
                           <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
@@ -71,6 +70,19 @@
                   <?php endfor; ?>
               </div>
               <?php endif; ?>               
+          
+              <section class="footer-cta">
+                <div class="container-grid">
+                  <div class="row-grid">
+                    <div class="col-grid">
+                      <h2>Lorem ipsum dolor sit amet.</h2>
+                      <div class="cta-section">
+                        <a href="" class="btn btn-outline-dark">consectetur dolor</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>    
 
 					</div><!-- #content -->
 				</div><!-- #primary -->

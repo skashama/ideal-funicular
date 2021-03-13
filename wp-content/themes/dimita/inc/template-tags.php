@@ -113,11 +113,13 @@ function dimita_page_title() {
 					<?php
 						if(function_exists('is_woocommerce') && is_woocommerce()){
 							if (class_exists("WCV_Vendors") && WCV_Vendors::is_vendor_page()){
+								// return;
 								get_template_part( 'breadcrumb');
 							}else{
 								dimita_woocommerce_breadcrumb();
 							}
 						}else{
+							// return;
 							get_template_part( 'breadcrumb');
 						}		
 					?>			

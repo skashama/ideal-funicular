@@ -50,9 +50,9 @@ $widget_id = isset( $widget_id ) ? $widget_id : 'category_slide_'.rand().time();
 								<?php if(isset($show_thumbnail) && $show_thumbnail) : ?>
 								<div class="item-image">
 									<?php if($thumb) : ?>
-										<a href="<?php echo get_term_link( $term->term_id, 'product_cat' ); ?>">
-											<img src="<?php echo esc_url($thumb); ?>" alt="<?php echo $term->slug ;?>" />
-										</a>
+                    <a href="<?php echo get_term_link( $term->term_id, 'product_cat' ); ?>"><?php echo esc_html( $term->name ); ?>
+										  <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo $term->slug ;?>" />
+                    </a>
 									<?php endif ; ?>
 								</div>
 								<?php endif;?>
@@ -68,8 +68,12 @@ $widget_id = isset( $widget_id ) ? $widget_id : 'category_slide_'.rand().time();
 											<i class="<?php echo esc_attr($icon_category); ?>"></i>
 										</div>
 									<?php endif;?>
+								<?php endif;?>						
+								<?php if($show_name) : ?>
+								<div class="item-title">
+									<a href="<?php echo get_term_link( $term->term_id, 'product_cat' ); ?>"><?php echo esc_html( $term->name ); ?></a>
+								</div>
 								<?php endif;?>
-
 								<?php if(isset($show_count) && $show_count) : ?>
 								<div class="item-count">
 									<?php if($term->count == 1){?>

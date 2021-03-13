@@ -7,6 +7,40 @@
 	?>
 	<h1 class="bwp-title hide"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 	<header id='bwp-header' class="bwp-header header-v2">	
+    <?php if(isset($dimita_settings['show-header-top']) && $dimita_settings['show-header-top']){ ?>
+      <div id="bwp-topbar" class="topbar-v1">
+        <div class="topbar-inner">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 topbar-left hidden-xs">
+                <?php if( isset($dimita_settings['email']) && $dimita_settings['email'] ) : ?>
+                <div class="email  hidden-xs">
+                  <label><?php echo esc_html__("Email:","dimita") ?></label> <a href="<?php echo esc_attr($dimita_settings['link-email']); ?>"><?php echo esc_html($dimita_settings['email']); ?></a>
+                </div>
+                <?php endif; ?>
+                <?php if( isset($dimita_settings['sale']) && $dimita_settings['sale'] ) : ?>
+                <div class="location hidden-sm hidden-xs">
+                  <label><?php echo esc_html__("Today’s Deal:","dimita") ?></label><?php echo esc_html($dimita_settings['sale']); ?>
+                </div>
+                <?php endif; ?>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 topbar-right">
+                <?php if( isset($dimita_settings['location']) && $dimita_settings['location'] ) : ?>
+                  <div class="order hidden-sm hidden-xs">
+                    <a href="<?php echo esc_attr($dimita_settings['link-location']); ?>"><?php echo esc_html($dimita_settings['location']); ?></a>
+                  </div>
+                <?php endif; ?>
+                <?php if(is_active_sidebar('header-top-link-2')){ ?>
+                  <div class="block-top-link">					
+                    <?php dynamic_sidebar( 'header-top-link-2' ); ?>
+                  </div>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
 		<div class='header-wrapper '>
 			<div class='header-content' data-sticky_header="<?php echo esc_attr($enable_sticky_header); ?>">
 				<?php if(($show_searchform || $show_wishlist || $show_minicart || (is_active_sidebar('top-link')) ) && class_exists( 'WooCommerce' )){ ?>
