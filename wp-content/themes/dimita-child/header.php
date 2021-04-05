@@ -25,6 +25,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
+  <!-- Google fonts style -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Roboto+Slab&display=swap" rel="stylesheet">
+  <!-- Google fonts style -->
 	<link rel="profile" href="//gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php esc_url(bloginfo( 'pingback_url' )); ?>">
 	<?php wp_head(); ?>
@@ -78,19 +82,59 @@
 	// dimita_page_title(); 
 	?>
 
-<?php if ( !is_front_page() ) :  ?>
+<?php if ( !is_front_page()) :  ?>
   <div class="banner-header">
     <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 banner-left">
-        <h3 class="mt-2">
-        <?php echo get_the_title(); ?>
-        </h3>
-      </div>
+        <?php if ( !is_single() ) : ?>
+            <h3 class="mt-2">
+              <?php						
+              if( is_category() ) :
+                single_cat_title();
+              elseif (class_exists("WCV_Vendors") && WCV_Vendors::is_vendor_page()) :
+                $vendor_shop 		= urldecode( get_query_var( 'vendor_shop' ) );
+                $vendor_id   		= WCV_Vendors::get_vendor_id( $vendor_shop );
+                $shop_name 			= WCV_Vendors::get_vendor_shop_name( stripslashes( $vendor_id ) );
+              echo esc_html($shop_name);
+              elseif (class_exists("WeDevs_Dokan") && dokan()->vendor->get( get_query_var( 'author' ) ) && get_query_var( 'author' ) != 0 ) :
+                $store_user    = dokan()->vendor->get( get_query_var( 'author' ) );
+                $shop_name 			= $store_user->get_shop_name();
+                echo esc_html($shop_name);							
+              elseif ( is_tax() ) :
+                single_tag_title();	
+              elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) :
+                esc_html_e( 'Galleries', 'dimita' );
+              elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
+                esc_html_e( 'Images', 'dimita' );
+              elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
+                esc_html_e( 'Videos', 'dimita' );
+              elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
+                esc_html_e( 'Quotes', 'dimita' );
+              elseif ( is_tax( 'post_format', 'post-format-audio' ) ) :
+                esc_html_e( 'Audios', 'dimita' );
+              elseif ( is_archive() && is_author() ) :
+                esc_html_e( 'Posts by " ', 'dimita' ) . the_author() . esc_html_e(' " ','dimita');
+              elseif ( function_exists('is_shop') && is_shop() ) :							
+                esc_html_e( 'Shop', 'dimita' );
+              elseif ( is_archive() && !is_search()) :						
+                post_type_archive_title();
+              elseif ( is_search() ) :
+                printf( esc_html__( 'Search for: %s', 'dimita' ), get_search_query() );
+              elseif ( is_singular( 'knowledge' ) ) :
+                esc_html_e( 'Knowledge Base', 'dimita' );
+              elseif ( is_home() ) :
+                esc_html_e( 'Posts', 'dimita' );
+              else :
+                echo get_the_title();
+              endif;
+              ?>
+            </h3>
+            <?php endif; ?>
+        </div>
 
-      <div class="col-12 col-md-6 banner-right">
-        <?php get_template_part( 'breadcrumb'); ?>
-      </div>
+    <!-- banner-right breadcrumb  -->
+
     </div>
     </div>
   </div>

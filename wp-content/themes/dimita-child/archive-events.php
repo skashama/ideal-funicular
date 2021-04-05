@@ -1,13 +1,20 @@
 <?php 
 	get_header();	
+	$sidebar_blog = dimita_blog_sidebar();
 	$layout_blog = dimita_blog_view();
 	$class_content_blog = 'blog-content-'.esc_attr($layout_blog);
 ?>
 <div class="container">
 	<div class="category-posts row">
-		<div class="cate-post-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<?php if($sidebar_blog == 'left' && is_active_sidebar('sidebar-blog')):?>		
+		<div class="bwp-sidebar sidebar-blog <?php echo esc_attr(dimita_get_class()->class_sidebar_left); ?>">
+			<?php dynamic_sidebar( 'sidebar-blog' );?>	
+		</div>
+		<?php endif; ?>
+		<div class="cate-post-content <?php echo esc_attr($sidebar_blog); ?> <?php if(is_active_sidebar('sidebar-blog')){ echo esc_attr(dimita_get_class()->class_blog_content); }else{ echo "col-lg-12 col-md-12 col-sm-12 col-xs-12"; } ?>">
 			<section id="primary" class="content-area">
 				<div id="content" class="site-content <?php echo esc_attr($class_content_blog);?>" role="main">
+
 						<?php if ( have_posts() ) : ?>
 						<?php
 								// Start the Loop.
@@ -29,6 +36,11 @@
 				<?php 	dimita_paging_nav(); ?>
 			</section><!-- #primary -->
 		</div>
+		<?php if($sidebar_blog == 'right' && is_active_sidebar('sidebar-blog')): ?>			
+			<div class="bwp-sidebar sidebar-blog <?php echo esc_attr(dimita_get_class()->class_sidebar_right); ?>">
+				<?php dynamic_sidebar('sidebar-blog');?>	
+			</div>				
+		<?php endif; ?>
     </div>
 </div>
 <?php

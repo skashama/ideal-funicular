@@ -37,57 +37,70 @@ function register_events() {
         'public' => true,
         'has_archive' => true,
         'labels' => $labels,
+        'taxonomies' => array( 'category', 'post_tag' ),
         'rewrite' => array( 'slug' => 'events', 'with_front' => false ),
-        'supports' => array( 'title', 'author', 'thumbnail', 'custom-fields', 'excerpt' )
+        'supports' => array( 'title', 'author', 'thumbnail', 'custom-fields', 'excerpt' ),
+        'menu_icon' => 'dashicons-calendar-alt'
     );
 
     register_post_type( 'events', $args);
 } 
 
-// Event Taxonomy : Industry
+// Register "Type of Events" Custom Taxonomy
 
-add_action( 'init', 'define_event_industry_taxonomy' );
+add_action( 'init', 'type_event', 0 );
 
-function define_event_industry_taxonomy() {
-    $labels = array(
-        'name' => 'Industry'
-    );
+function type_event() {
 
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true,
-        'query_var' => true,
-        'rewrite' => true
-    );
+	$labels = array(
+		'name'                       => _x( 'Type of Events', 'Taxonomy General Name', 'dimita-child' ),
+		'singular_name'              => _x( 'Type of Event', 'Taxonomy Singular Name', 'dimita-child' ),
+		'menu_name'                  => __( 'Type of Event', 'dimita-child' ),
+		'all_items'                  => __( 'All Types of Event', 'dimita-child' ),
+		'parent_item'                => __( 'Parent Type of Event', 'dimita-child' ),
+		'parent_item_colon'          => __( 'Type of Event:', 'dimita-child' ),
+		'new_item_name'              => __( 'New Type of Event', 'dimita-child' ),
+		'add_new_item'               => __( 'Add Type of Event', 'dimita-child' ),
+		'edit_item'                  => __( 'Edit Type of Event', 'dimita-child' ),
+		'update_item'                => __( 'Update Type of Event', 'dimita-child' ),
+		'view_item'                  => __( 'View Type of Event', 'dimita-child' ),
+		'separate_items_with_commas' => __( 'Separate Type of Event with commas', 'dimita-child' ),
+		'add_or_remove_items'        => __( 'Add or remove Type of Event', 'dimita-child' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'dimita-child' ),
+		'popular_items'              => __( 'Popular Types of Event', 'dimita-child' ),
+		'search_items'               => __( 'Search Types of Event', 'dimita-child' ),
+		'not_found'                  => __( 'Not Found', 'dimita-child' ),
+		'no_terms'                   => __( 'No Type of Event', 'dimita-child' ),
+		'items_list'                 => __( 'Types of Event list', 'dimita-child' ),
+		'items_list_navigation'      => __( 'Type of Event list navigation', 'dimita-child' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'type_event', array( 'events' ), $args );
 
-    register_taxonomy( 'Industry', 'events', $args);
 }
 
-// Industry Taxonomy Shortcode
+// Add Events Post Type to WP Post Category
 
-function list_terms_custom_taxonomy( $atts ) {
-    // Inside the function we extract custom taxonomy parameter of our shortcode
+add_filter('pre_get_posts', 'query_post_type');
 
-    extract( shortcode_atts( array(
-        'custom_taxonomy' => '',
-    ), $atts ) );
-
-    // arguments for function wp_list_categories
-    $args = array(
-        'taxonomy' => $custom_taxonomy,
-        'title_li' => ''
-    );
-
-    // We wrap it in unordered list
-    echo '<ul>';
-    echo wp_list_categories($args);
-    echo '</ul>';
+function query_post_type($query) {
+  if( is_category() ) {
+    $post_type = get_query_var('post_type');
+    if($post_type)
+        $post_type = $post_type;
+    else
+        $post_type = array('nav_menu_item', 'post', 'events');
+    $query->set('post_type', $post_type);
+    return $query;
+    }
 }
-
-// Add a shortcode that executes our function
-add_shortcode( 'ct_terms', 'list_terms_custom_taxonomy');
-
-//Allow Text widgets to execute shortcodes
-add_filter('widget_text', 'do_shortcode');
 
 ?>

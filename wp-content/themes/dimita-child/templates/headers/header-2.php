@@ -49,7 +49,16 @@
 						<div class="content-header">
 							<div class="row">
 								<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12 header-logo">
-									<?php dimita_header_logo(); ?>
+									<?php 
+									// dimita_header_logo(); 
+									?>
+									<div class="wpbingoLogo">
+										<a  href="<?php echo esc_url( home_url( '/' ) ); ?>">											
+											<?php 
+												$logo = get_stylesheet_directory_uri().'/images/logo/logo-black.png'; ?>
+												<img src="<?php echo esc_attr( $logo ); ?>" alt="<?php bloginfo('name'); ?>"/>											
+										</a>
+									</div>
 								</div>
 								<div class="col-xl-8 col-lg-8 col-md-6 col-sm-6 col-3 wpbingo-menu-mobile header-main">
 									<div class="header-menu-bg">

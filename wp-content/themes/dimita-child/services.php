@@ -18,8 +18,8 @@
             <?php 
               $rows = get_field('featured_service');
               if( $rows ): ?>
-                <div class="container-fluid">
-                  <?php for( $i = 0; $i <= count($rows) - 1; $i++ ):
+                <div class="container-fluid service-main">
+                  <?php for( $i = 0; $i < count($rows); $i++ ):
                     $current = $rows[$i];
                     $image = $current['service_image'];
                     if( $i%2 == 0 ):
@@ -34,7 +34,7 @@
                       <div class="col-12 col-md-6 text-section">
                         <h2><?php echo esc_html( $current['service_title'] ); ?></h2>
                         <p><?php echo $current['service_description']; ?></p>
-                        <div>
+                        <div class="service-cta">
                           <?php 
                           $link = $current['service_cta']; 
                           if( $link ): ?>
@@ -49,13 +49,13 @@
                         <div class="col-12 col-md-6 text-section">
                           <h2><?php echo esc_html( $current['service_title'] ); ?></h2>
                           <p><?php echo $current['service_description']; ?></p>
-                        <div>
+                          <div class="service-cta">
                             <?php 
                             $link = $current['service_cta']; 
                             if( $link ): ?>
                               <a href="<?php echo esc_url( $link['url'] ); ?>" class="btn btn-outline-info" tabindex="-1" role="button"><?php echo esc_html( $link['title'] ); ?></a>
                             <?php endif; ?>
-                        </div>
+                          </div>
                         </div>
 
                       <?php $image = $current['service_image'];
@@ -69,15 +69,20 @@
                     <?php endif; ?>    
                   <?php endfor; ?>
               </div>
-              <?php endif; ?>               
+              <?php endif; ?>
           
               <section class="footer-cta">
                 <div class="container-grid">
                   <div class="row-grid">
                     <div class="col-grid">
-                      <h2>Lorem ipsum dolor sit amet.</h2>
+                      <h2><?php the_field('footer_cta_heading') ?></h2>
+                      <p><?php the_field('footer_cta_paragraph') ?></p>
                       <div class="cta-section">
-                        <a href="" class="btn btn-outline-dark">consectetur dolor</a>
+                        <?php 
+                          $this_link = get_field('footer_cta_button_link'); 
+                          if( $this_link ): ?>
+                            <a href="<?php echo esc_url( $this_link['url']) ?>" class="btn btn-outline-dark"><?php echo esc_html( $this_link['title'] ); ?></a>
+                          <?php endif; ?>
                       </div>
                     </div>
                   </div>

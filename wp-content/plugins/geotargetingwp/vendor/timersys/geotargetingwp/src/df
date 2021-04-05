@@ -1,0 +1,257 @@
+<h1 dir="ltr">How to Geotarget Beaver Builder Content on WordPress</h1>
+
+<p dir="ltr">Looking for a way to geotarget Beaver Builder content on your WordPress site?</p>
+
+
+<p dir="ltr">Beaver Builder helps you create your own unique designs using its visual, drag-and-drop page builder plugin. But what if you want to display different Beaver Builder designs or modules based on the geolocation of your site&#39;s visitors?</p>
+
+
+<p dir="ltr">For example, you could show different button modules (CTAs), different videos, different ads, and lots more. In total, you&#39;ll be able to geotarget your designs at the Beaver Builder row, column, or individual module level.</p>
+
+
+<p dir="ltr">In this article, you&#39;re going to learn how to geotarget Beaver Builder content using GeotargetingWP and the Geotargeting Pro plugin. You&#39;ll be able to set up your geotargeting rules from&nbsp;inside&nbsp;the regular Beaver Builder interface - no need to learn a new interface or use any code.</p>
+
+
+<p dir="ltr">Specifically, you&#39;ll get a new&nbsp;GeoTargeting&nbsp;tab in the settings area for any row, column, or module:</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241520.jpeg" width="624" height="605" class="fr-fic fr-dii"></p>
+
+
+<p dir="ltr">This method will work with:</p>
+
+<ul>
+	<li dir="ltr">
+
+	Beaver Builder (free) at WordPress.org
+	</li>
+	<li dir="ltr">
+
+	Beaver Builder Pro
+	</li>
+	<li dir="ltr">
+
+	Beaver Themer (Beaver Builder&#39;s full theme building extension)
+	</li>
+	<li dir="ltr">
+
+	Any Beaver Builder extensions (as long as they&#39;re coded properly)
+	</li>
+</ul>
+
+
+<p dir="ltr">Ready to learn how to do it? Let&#39;s dig in&hellip;</p>
+
+<h2 dir="ltr">How to Geotarget Beaver Builder Content on WordPress</h2>
+
+<p dir="ltr">To geotarget Beaver Builder page builder, you need&nbsp;<a href="https://geotargetingwp.com/geotargeting-pro">the Geotargeting Pro plugin</a> from&nbsp;<a href="https://geotargetingwp.com/">GeotargetingWP</a>.</p>
+
+
+<p dir="ltr">Geotargeting Pro lets you geotarget any part of your WordPress site. You can use it to geotarget entire post/pages/custom post types, widgets, menu items, and - of course - content from Beaver Builder.</p>
+
+
+<p dir="ltr">Again, it has a built-in integration with Beaver Builder so that you&#39;re able to configure all of your geotargeting rules right from the Beaver Builder interface.</p>
+
+
+<p dir="ltr">More importantly, you can geotarget your content by different areas including:</p>
+
+<ul>
+	<li dir="ltr">
+
+	Country
+	</li>
+	<li dir="ltr">
+
+	City
+	</li>
+	<li dir="ltr">
+
+	State
+	</li>
+	<li dir="ltr">
+
+	Zip code
+	</li>
+	<li dir="ltr">
+
+	Radius (a certain distance from latitude/longitude coordinates that you specify)
+	</li>
+</ul>
+
+
+<p dir="ltr">The geotargeting plugin itself is free, but you will need to&nbsp;<a href="https://geotargetingwp.com/pricing">subscribe to the GeotargetingWP service</a> to actually detect your visitors&#39; location. You can get a&nbsp;14-day free trial, with no credit card required, though. So you&#39;ll be able to follow this entire tutorial without paying anything or entering a credit card - you&#39;ll only need to pay if you want to continue using the service after those 14 days.</p>
+
+<h3 dir="ltr">Step 1: Set Up the Geotargeting Pro Plugin</h3>
+
+<p dir="ltr">To begin, you&#39;ll need to&nbsp;<a href="https://geotargetingwp.com/pricing">register for a GeotargetingWP account</a>. Again, you can get a 14-day free trial with no credit card required.</p>
+
+
+<p dir="ltr">Once you register and log into your account, you should see a prompt to download the latest version of the GeotargetingWP plugin in the sidebar of&nbsp;<a href="https://geotargetingwp.com/dashboard">your account dashboard</a>:</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241588.png" width="624" height="420" class="fr-fic fr-dii"></p>
+
+<p dir="ltr">I1</p>
+
+
+<p dir="ltr">Once you&#39;ve downloaded the plugin, install and activate it on your WordPress site. Activating the plugin will launch a setup wizard to help you configure the plugin&#39;s basic settings. In the setup wizard, one piece of information that you&#39;ll need to enter is your GeotargetingWP API keys.&nbsp;</p>
+
+
+<p dir="ltr">To find these keys, open a new tab and&nbsp;<a href="https://geotargetingwp.com/dashboard/api-key">go to this link</a>. Or, go to the&nbsp;API&nbsp;Keys&nbsp;section in the drop-down menu at the top-right corner of your GeotargetingWP dashboard.</p>
+
+
+<p dir="ltr">While you&#39;re in the GeotargetingWP dashboard, you&#39;ll also want to add your WordPress website to the &quot;Allowed domains&quot; box in the API Key area:</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241658.png" width="624" height="340" class="fr-fic fr-dii"></p>
+
+
+<p dir="ltr">Once you&#39;ve added your site and you have your&nbsp;API Key&nbsp;and&nbsp;API Secret, go back to your WordPress dashboard and add the API keys to the boxes in the plugin&#39;s setup wizard. Then, you&#39;ll need to make two additional choices:</p>
+
+<ol>
+	<li dir="ltr">
+
+	Fallback Country&nbsp;- if GeotargetingWP can&#39;t detect a visitor&#39;s IP/location for some reason, it will treat the visitor as if they were from this country as a fallback.
+	</li>
+	<li dir="ltr">
+
+	Bots Country&nbsp;- GeotargetingWP will always treat bots and crawlers (like Google&#39;s search crawler) as if they&#39;re visiting from this country.&nbsp;
+	</li>
+</ol>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231242203.jpeg" width="624" height="611" class="fr-fic fr-dii"></p>
+
+
+<p dir="ltr">Once you&#39;ve entered that information, click&nbsp;Next.</p>
+
+
+<p dir="ltr">On the next page, you&#39;ll have an option to install some of GeotargetingWP&#39;s other add-on plugins. For example, you can create&nbsp;<a href="https://geotargetingwp.com/geo-links">geotargeted links</a> or&nbsp;<a href="https://geotargetingwp.com/geo-redirects">redirects</a>. You can install any add-ons if they fit your needs. However, you don&#39;t need to install any add-ons to geotarget Beaver Builder content.</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241802.png" width="624" height="507" class="fr-fic fr-dii"></p>
+
+
+<p dir="ltr">Once you finish the setup wizard, you&#39;re ready to start adding geotargeting to Beaver Builder.</p>
+
+<h3 dir="ltr">2. Geotarget Beaver Builder Content</h3>
+
+<p dir="ltr">Next, you can open the regular Beaver Builder interface to start geotargeting your content. Again, GeotargetingWP works with both Beaver Builder free/Pro as well as any theme templates that you&#39;re creating with Beaver Themer.</p>
+
+
+<p dir="ltr">To set up a geotargeting rule, all you need to do is open the settings for any row, column, or module. You should then see a new&nbsp;Geo Targeting&nbsp;tab, which is where you can set up your geotargeting rules:</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241875.jpeg" width="624" height="605" class="fr-fic fr-dii">I1</p>
+
+
+<p dir="ltr">You should notice two things here:</p>
+
+
+<p dir="ltr">First, GeotargetingWP lets you choose different areas to geotarget. Again, you can target by:</p>
+
+<ul>
+	<li dir="ltr">
+
+	Country
+	</li>
+	<li dir="ltr">
+
+	City
+	</li>
+	<li dir="ltr">
+
+	State
+	</li>
+	<li dir="ltr">
+
+	Zip code
+	</li>
+	<li dir="ltr">
+
+	Radius around certain longitude/latitude coordinates
+	</li>
+</ul>
+
+
+<p dir="ltr">You can also create your own &quot;Regions&quot;, which help you save time. A region lets you automatically target multiple locations at once. GeotargetingWP comes with its own default regions such as &quot;Asia&quot;, &quot;Europe&quot;, etc. However, you can also create your own custom regions with any combination of locations.</p>
+
+
+<p dir="ltr">Second, you can use both&nbsp;Include&nbsp;and&nbsp;Exclude&nbsp;rules:</p>
+
+<ul>
+	<li dir="ltr">
+
+	Include&nbsp;- this row/column/module will only show to visitors from these locations.
+	</li>
+	<li dir="ltr">
+
+	Exclude&nbsp;- this row/column/module will show to&nbsp;all&nbsp;visitors&nbsp;except&nbsp;for visitors from these locations.
+	</li>
+</ul>
+
+<h4 dir="ltr">An Example of How to Use GeotargetingWP in Beaver Builder</h4>
+
+<p dir="ltr">Let&#39;s look at an example to show you how it works. Let&#39;s say you want to show one button to visitors from Vietnam and another button to visitors from anywhere in the world&nbsp;except&nbsp;Vietnam.</p>
+
+
+<p dir="ltr">First, you would add two separate button modules in Beaver Builder:</p>
+
+<ul>
+	<li dir="ltr">
+
+	One module with the link/CTA for visitors from Vietnam.
+	</li>
+	<li dir="ltr">
+
+	Another module with the link/CTA for visitors from everywhere except Vietnam.
+	</li>
+</ul>
+
+
+<p dir="ltr">I2</p>
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241088.png" width="624" height="221" class="fr-fic fr-dii"></p>
+
+<p dir="ltr">Next, you would open the&nbsp;Geo Targeting&nbsp;settings for the button for Vietnamese visitors. Here, you would set the&nbsp;Include Countries&nbsp;rule equal to &quot;Vietnam&quot;:</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241953.png" width="624" height="471" class="fr-fic fr-dii">I3</p>
+
+
+<p dir="ltr">Again, this means that this first button module will only display to visitors from Vietnam.</p>
+
+
+<p dir="ltr">Then, you would open the&nbsp;Geo Targeting&nbsp;settings for the button for visitors from outside Vietnam. Here, you would set the&nbsp;Exclude Countries&nbsp;rule equal to &quot;Vietnam&quot;.&nbsp;Remember, this means that this module will display to visitors from anywhere except Vietnam:</p>
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231242014.png" width="624" height="500" class="fr-fic fr-dii"></p>
+
+<p dir="ltr">I4</p>
+
+
+<p dir="ltr">And that&#39;s it! Now, your visitors will only see the single button module that applies to them.</p>
+
+
+<p dir="ltr">For example, I&#39;m currently writing this article from Vietnam, so when I open the Beaver Builder design on the frontend of the site, I only see the button for Vietnamese visitors:</p>
+
+
+<p dir="ltr"><img src="https://s3.amazonaws.com/geotargetingwp/1606231241441.png" width="624" height="289" class="fr-fic fr-dii">I5</p>
+
+
+<p dir="ltr">If someone were browsing from outside Vietnam, they would only see the other button.</p>
+
+
+<p dir="ltr">This is just a simple example with two rules. But you could also get more creative and target additional locations if needed. You could also use the same approach to geotarget entire sections or columns instead of just a single module.</p>
+
+<h2 dir="ltr">Will These Geotargeting Rules Work With Page Caching?</h2>
+
+<p dir="ltr">Yes!&nbsp;Even if you&#39;re using page caching from your plugin or host to speed up your Beaver Builder designs, GeotargetingWP still works as long as you&nbsp;<a href="https://geotargetingwp.com/docs/geotargetingwp/ajax-mode">enable Ajax mode in the plugin&#39;s settings</a>.</p>
+
+<h2 dir="ltr">Start Geotargeting Beaver Builder Today</h2>
+
+<p dir="ltr">By geotargeting your Beaver Builder designs, you can create more optimized web experiences for visitors from different locations.</p>
+
+
+<p dir="ltr">To start geotargeting Beaver Builder without needing any code or special technical knowledge,&nbsp;<a href="https://geotargetingwp.com/pricing">sign up for a GeotargetingWP account today</a> and start your 14-day free trial.</p>
+
+<p data-f-id="pbf" style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;">Powered by <a href="https://www.froala.com/wysiwyg-editor?pb=1" title="Froala Editor">Froala Editor</a></p>

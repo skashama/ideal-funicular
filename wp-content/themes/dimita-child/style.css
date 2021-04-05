@@ -11,12 +11,26 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: dimita-child
 */
 
+/* Body */
+body {
+  font-family: 'Montserrat', Arial, Helvetica, serif;
+}
+
+.back-top,
+input[type="submit"],
+.category-posts .cate-post-content .post-content .read-more, 
+.author .post-content .read-more, .search .post-content .read-more {
+  border-radius: 4px !important;
+}
+
  /* Header  */
 .bwp-header.header-v2 .bwp-navigation ul > li.level-0.current_page_item > a, 
 .bwp-header.header-v2 .bwp-navigation ul > li.level-0:hover > a, 
 .bwp-header.header-v2 .bwp-navigation ul > li.level-0.current-menu-item > a, 
-.bwp-header.header-v2 .bwp-navigation ul > li.level-0.current-menu-ancestor > a {
-    color: #9f0be8;
+.bwp-header.header-v2 .bwp-navigation ul > li.level-0.current-menu-ancestor > a,
+.bwp-navigation ul > li.level-0 > ul.sub-menu li:hover > a, 
+.bwp-navigation ul > li.level-0 div.sub-menu li:hover > a  {
+    color: #500077;
 }
 
 .bwp-header.header-v2 {
@@ -29,21 +43,34 @@ Text Domain: dimita-child
 }
 
 #bwp-topbar {
-  background-color: blueviolet;
+  background-color: #500077;
 }
 
-.header-wrapper {
-  background-color: #1b1b1b;
-  padding: 35px 0 30px;
-  width: 100%;
+.bwp-navigation ul > li.level-0 .sub-menu {
+  background: #fff;
+}
+
+.bwp-navigation ul > li.level-0 > ul.sub-menu li a, 
+.bwp-navigation ul > li.level-0 div.sub-menu li a {
+  color: #1b1b1b;
 }
 
 .banner-header {
   max-width: 100%;
-  background-color: blueviolet;
+  background-color: #500077;
+  background-image: url("./images/logo/culture-15bw.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-top: 3rem;
   padding-bottom: 3rem;
   margin: 0 0 3rem;
+}
+
+.banner-header h3, 
+.banner-header a,
+.banner-header .current {
+  color: #fff;
 }
 
 .banner-left {
@@ -60,6 +87,37 @@ Text Domain: dimita-child
   }
 }
 
+.bwp-header .wpbingoLogo img {
+  max-height: 32px !important;
+}
+
+.header-wrapper {
+  background-color: #fff;
+  padding: 35px 0 30px;
+  width: 100%;
+}
+
+.bwp-navigation ul > li .menu-item-text {
+  color: #1b1b1b;
+}
+
+.bwp-header.header-v2 .search-box .search-toggle,
+.bwp-header.header-v2 .block-top-link > .widget .widget-custom-menu .widget-title,
+.bwp-header.header-v2 .wpbingoCartTop .top-cart > a,
+.bwp-navigation ul > li.level-0.menu-item-has-children > a:after {
+  color: #1b1b1b !important;
+}
+
+/* Sidebar */
+.widget_search .form-content input[type="text"] {
+  border-radius: 4px;
+}
+
+.bwp-sidebar > .widget.widget_search #searchsubmit {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
 /* Homepage */
 .item.item-product-cat {
   padding-bottom: 30px;
@@ -67,47 +125,57 @@ Text Domain: dimita-child
 
 .item.item-product-cat img {
   border-radius: .5rem;
-} 
+}
 
-/* .hfeed .page-wrapper {
-  background-image: url();
-} */
-
-/* Main Section */
-@media (min-width: 991px) {
-    .bwp-main {
-        /* padding-top: 100px; */
-    } 
+.page-template #bwp-main > .container {
+  width: 100%;
+  padding: 0;
+  max-width: 100%;
 }
 
 /* Services */
+
+.service-main {
+  margin-top: -20px;
+}
+
+@media (max-width: 768px) {
+  .service-main {
+    margin-top: -60px;
+  }
+}
+
 @media (max-width: 426px) {
   .service-row {
     position: relative;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-end; */
     align-content: space-between;
-    height: 500px;
     margin-bottom: 2rem;
   }
 
   .image-section {
-    vertical-align: top;
+    order: 0;
+    padding: 0;
   } 
 
   .text-section {
-    position: absolute;
+    order: 1;
     bottom: 0;
+    padding: 0;
   }
 
-  .featured-image img {
-    min-width: 100%;
-    height: 200px;
+  .service-row .image-section figure img {
+    width: 395px;
+    height: 242px;
   }
 
   .text-section p {
     font-size: 14px;
+  }
+
+  .service-row .image-section figure {
+    margin: 0 !important;
   }
 }
 
@@ -118,7 +186,7 @@ Text Domain: dimita-child
 }
 
 .service-row {
-  margin-top: 80px;
+  margin-top: 70px;
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px;
@@ -156,7 +224,7 @@ Text Domain: dimita-child
 
 /* (Services) Footer Call-to-Action */
 .footer-cta {
-  background-color: #AF70F5;
+  background-color: #af71d3;
   height: auto;
   display: flex;
   align-items: center;
@@ -274,4 +342,112 @@ Text Domain: dimita-child
 
 .bwp-breadcrumb {
   width: 100%;
+}
+
+/* Blogs */
+
+.cate-post-content {
+  text-align: left !important;
+}
+
+.post-single {
+  text-align: left !important;
+}
+
+.banner-single_page {
+  order: -1;
+}
+
+.banner-single_page .breadcrumb {
+  text-align: left !important;
+}
+
+.embed-container iframe {
+  width: 90%;
+  margin: 0 5%;
+}
+
+/* Request Demo form */
+
+@media (min-width: 600px) {
+  div.wpforms-container-full .wpforms-form textarea {
+    width: 60% !important;
+  }
+}
+
+.elementor-heading-title {
+  font-weight: 700;
+  color: #332e2e;
+  font-size: 18px;
+}
+
+/* Buttons */
+
+.elementor a,
+a.rs-layer,
+a.rs-layer:-webkit-any-link,
+.wpbingo-newsletter-1 input[type="submit"] {
+  border-radius: 4px;
+}
+
+/* FAQs */
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  background-color: rgba(0,0,0,0.03);
+}
+
+.nav-tabs {
+  border-bottom: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+@media (min-width: 1200px) and (max-width: 1500px) {
+  .faqs-main {
+    padding: 0 50px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .faqs-main {
+    max-width: 1500px;
+  }
+}
+
+.nav-link {
+  padding: 1rem 2rem;
+}
+
+@media (min-width: 320px) and (max-width: 426px) {
+  .nav-tabs {
+    font-size: 0.81rem;
+  }
+
+  .nav-link {
+    padding: .5rem 1rem;
+  }
+}
+
+@media (max-width: 321px) {
+  .nav-tabs {
+    font-size: 0.81rem;
+  }
+
+  .nav-link {
+    padding: .5rem .7rem;
+  }
+}
+
+.card-header .btn-block,
+.card-header .btn-block:hover {
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+/* .card-header .btn-block:hover {
+  text-decoration: none;
+} */
+
+.card-header > h2 {
+  margin: 1rem 0;
 }
