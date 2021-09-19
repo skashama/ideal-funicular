@@ -1,4 +1,4 @@
-	<?php 
+<?php 
 		$dimita_settings = dimita_global_settings();
 		$show_minicart = (isset($dimita_settings['show-minicart']) && $dimita_settings['show-minicart']) ? ($dimita_settings['show-minicart']) : false;
 		$enable_sticky_header = ( isset($dimita_settings['enable-sticky-header']) && $dimita_settings['enable-sticky-header'] ) ? ($dimita_settings['enable-sticky-header']) : false;
@@ -59,6 +59,7 @@
 												<img src="<?php echo esc_attr( $logo ); ?>" alt="<?php bloginfo('name'); ?>"/>											
 										</a>
 									</div>
+
 								</div>
 								<div class="col-xl-8 col-lg-8 col-md-6 col-sm-6 col-3 wpbingo-menu-mobile header-main">
 									<div class="header-menu-bg">

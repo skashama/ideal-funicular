@@ -2,8 +2,9 @@
  
 // Load Bootstrap
 function dimitaChild_enqueue_script() {
+    wp_enqueue_script( 'jquery','https://code.jquery.com/jquery-3.5.1.slim.min.js', array( 'jquery' ),'',true );
+    wp_enqueue_script( 'popper','https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', array( 'jquery' ),'',true );
     wp_enqueue_script( 'bootstrap_js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js', array('jquery'), NULL, true );
-    
     wp_enqueue_style( 'bootstrap_css', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css', false, NULL, 'all' );
  }
  
@@ -86,21 +87,25 @@ function type_event() {
 	register_taxonomy( 'type_event', array( 'events' ), $args );
 
 }
-
-// Add Events Post Type to WP Post Category
-
-add_filter('pre_get_posts', 'query_post_type');
-
-function query_post_type($query) {
-  if( is_category() ) {
-    $post_type = get_query_var('post_type');
-    if($post_type)
-        $post_type = $post_type;
-    else
-        $post_type = array('nav_menu_item', 'post', 'events');
-    $query->set('post_type', $post_type);
-    return $query;
+ 
+// Prepends category name(s) to the event titles
+function tribe_events_title_include_cat ($title, $id) {
+ 
+  $separator = ' » '; // HTML Separator between categories and title
+  $cats = get_the_terms($id, 'tribe_events_cat');
+  $is_ajax = defined('DOING_AJAX') && DOING_AJAX;
+  $is_truly_admin = is_admin() && !$is_ajax;
+ 
+  if (tribe_is_event($id) && $cats && !is_single() && !$is_truly_admin) {
+    $cat_titles = array();
+    foreach($cats as $i) {
+      $cat_titles[] = $i->name;
     }
+    $title = implode(', ', $cat_titles) . $separator . $title;
+  }
+ 
+  return $title;
 }
+add_filter('the_title', 'tribe_events_title_include_cat', 100, 2);
 
 ?>
